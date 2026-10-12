@@ -71,7 +71,7 @@ struct PlaylistSidebar: View {
                     model.selectedPlaylistID = playlist.id
                     model.selection.clear()
                 }
-                .onDrop(of: ["public.data", .text], isTargeted: nil) { providers in
+                .onDrop(of: [UTType.data, UTType.text], isTargeted: nil) { providers in
                     for provider in providers {
                         provider.loadDataRepresentation(forTypeIdentifier: "public.data") { data, _ in
                             if let data, let ids = try? JSONDecoder().decode([UUID].self, from: data) {
